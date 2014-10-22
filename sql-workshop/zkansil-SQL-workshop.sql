@@ -5,7 +5,7 @@
 SELECT employee_name
 FROM   `works`
 WHERE  company_name =  "First Bank Corporation"
-ORDER BY `works`.`employee_name` ASC
+ORDER BY employee_name ASC
 LIMIT 0, 30
 ;
 
@@ -65,23 +65,23 @@ LIMIT 0, 30
 -- (g)
 CREATE TEMPORARY TABLE `lowest_paid` (
     SELECT      MAX(w1.salary) AS salary
-    FROM       `works` AS w1
-    INNER JOIN `works` AS w2
+    FROM       `works` AS `w1`
+    INNER JOIN `works` AS `w2`
     ON          w1.company_name = w2.company_name
     WHERE       w1.company_name = "Small Bank Corporation"
 );
 
 SELECT      w.employee_name
           , w.salary
-FROM       `works` AS w
-          ,`lowest_paid` as l
+FROM       `works`       AS `w`
+          ,`lowest_paid` AS `l`
 WHERE       w.salary > l.salary
 LIMIT 0, 30
 ;
 
 -- (h)
 CREATE TEMPORARY TABLE `SBC_city` (
-	SELECT city
+    SELECT city
     FROM `company`
     WHERE company_name = "Small Bank Corporation"
 );
@@ -132,17 +132,11 @@ LIMIT 1
 ;
 
 -- (l)
-CREATE TEMPORARY TABLE `avg_salary` (
-    SELECT company_name
-         , AVG(salary) AS salary
-    FROM `works`
-    GROUP BY company_name
-);
-
+-- Also uses table `avg_salary` defined in (i)
 CREATE TEMPORARY TABLE `avg_salary_FBC` (
-	SELECT AVG(salary) AS salary
-	FROM `works`
-	WHERE company_name = "First Bank Corporation"
+    SELECT AVG(salary) AS salary
+    FROM `works`
+    WHERE company_name = "First Bank Corporation"
 );
 
 SELECT    company_name
