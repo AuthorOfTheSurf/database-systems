@@ -1,10 +1,42 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 \usepackage{fullpage}
 \title{Modeling an Online Music Business}
 \author{Zane Kansil\\ Loyola Marymount University\\ Database Systems}
 
+% Allow commands
+\providecommand\phantomsection{}
+
+% Custom ToC labeling
+\renewcommand\thechapter{\Roman{chapter}\hspace{2em}}
+
+% Custom ToC spacing between chapter number and
+% chapter name
+\usepackage{tocloft}
+\setlength{\cftchapnumwidth}{3em}
+
 \begin{document}
 
+%---    Title page    ---%
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{%
+    \protect\numberline{I}Title Page}
 \maketitle
+
+%---    ToC    ---%
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{%
+    \protect\numberline{II}Contents}
+\tableofcontents
+% The title page and ToC are difficult to handle,
+% we set the page and chapter counter after the
+% ToC is generated so that the rest of the document
+% can continue on from there.
+\setcounter{page}{2}
+\setcounter{chapter}{2}
+
+%---    
+\chapter{First real section}
 
 \end{document}
