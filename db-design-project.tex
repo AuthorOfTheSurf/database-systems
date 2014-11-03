@@ -7,12 +7,15 @@
 \providecommand\phantomsection{}
 
 % Custom ToC labeling
-\renewcommand\thechapter{\Roman{chapter}\hspace{2em}}
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}}
 
 % Custom ToC spacing between chapter number and
 % chapter name
 \usepackage{tocloft}
 \setlength{\cftchapnumwidth}{3em}
+\setlength{\cftsecnumwidth}{3em}
+\setlength{\cftsubsecnumwidth}{4em}
 
 \begin{document}
 
@@ -36,7 +39,58 @@
 \setcounter{page}{2}
 \setcounter{chapter}{2}
 
-%---    
-\chapter{First real section}
+%---    Definition of Environment    ---%
+\chapter{Definition of Environment}
+
+\section{Input and Report forms}
+\section{Assumptions}
+\section{User-oriented data dictionary}
+\section{Cross-reference table}
+
+%---    Enterprise Database Design    ---%
+\chapter{Enterprise Database Design}
+
+\section{Logical model of the Enterprise}
+\subsection{List of Entities and Attributes}
+\subsection{List of Relationships and Attributes}
+\subsection{Entity-Relationship diagram of the Enterprise}
+
+\section{Conceptual model of the enterprise}
+\section{Table dictionary}
+\section{Attribute dictionary}
+
+%---    Database and Query Definition    ---%
+\chapter{Database and Query Definition}
+
+\section{Database Definition}
+    SQL DDL for your database objects.
+\section{Database Queries}
+    English version of 10+ database queries, and the SQL DML for each database query
+\section{Review sign-off sheet}
+\section{Design Tradeoffs and Limitations}
+    Discussion of the limitations of your design.
+
+%---    Database Integrity and Security    ---%
+\chapter{Database Integrity and Security}
+\section{Functional Dependencies}
+    A list of the functional dependencies that hold on your database.
+\section{Adjustments for Normalization}
+    An explanation of the changes needed to normalize your database.
+\section{Integrity and Security}
+    A list (in English) of the integrity and security constraints which are to hold on your database.
+
+%---    Implementation Notes    ---%
+\chapter{Implementation Notes}
+\section{Indices}
+    A list of the indices used by your database, with a justification for each.
+\section{Data}
+    The data used to populate your database.
+\section{Query Trace}
+    A trace of the execution of each of your queries.
+\section{Implementation Assessment}
+    An assessment of how smoothly your implementation went
+
+%---    Lessons Learned    ---%
+\chapter{Lessons Learned}
 
 \end{document}
