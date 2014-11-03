@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[11pt, a4paper]{report}
 \usepackage{fullpage}
 \title{Modeling an Online Music Business}
 \author{Zane Kansil\\ Loyola Marymount University\\ Database Systems}
@@ -38,6 +38,21 @@
 % can continue on from there.
 \setcounter{page}{2}
 \setcounter{chapter}{2}
+
+%---    Description of the Enterprise    ---%
+\chapter{Description of the Enterprise}
+A friend of mine intends to put out an all­-purpose site for his musical career. The site will be a hub for his online business and allow him to track sales and interactions with his fans.\\
+
+The site will serve as a place to feature embedded music and video players for John's music. It will be necessary to monitor this hosted media in terms of listens and views. Some other metrics John is interested in are on­-site plays (not a redirect), and redirects to his Soundcloud and YouTube accounts from their embedded players on his site. Videos and Songs are tracked separately due to their differing properties.\\
+
+There is a sales aspect to the site, merchandise will also be sold under the same domain. Some
+merchandise will be physical, such as hats, headbands, wristbands and stickers. Other merchandise
+will be digital, such as a donation to download a mixtape (a non-album collection of John's music). Physical merchandise needs to be shipped, so appropriate data such as \texttt{shipping\_status} and \texttt{destination} will need to be tracked. With physical merchandise, quantity and availability must be tracked. Digital merchandise is easier to manage as it is transmitted and there is less customer data to collect. Digital merchandise will also be
+infinitely available if listed, so there is no quantity­ related data to track.\\
+
+JohnDB records data for Physical and Digital consumers separately.\\
+
+As the main operator of his business, John wants to track of his sales and revenue. The most simple way to track this would be through a table of sales records. These records would detail everything necessary about the sale. A sale would correspond to a single type of product. If multiple products were purchased in the same transaction, then multiple sale entries would be logged.\\
 
 %---    Definition of Environment    ---%
 \chapter{Definition of Environment}
