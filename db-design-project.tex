@@ -7,8 +7,13 @@
 % Multi-page tables + accompanying header and footer comments
 \usepackage{longtable}
 
+% Vertical table headers, not sure what does what. graphicx is
+% multi-purpose and does a lot of other stuff like including images
 \usepackage{array,graphicx}
 \usepackage{booktabs}
+
+% Lossless .png format expected for figures
+\DeclareGraphicsExtensions{.png}
 
 \newcommand*\rot{\rotatebox{90}}
 
@@ -202,18 +207,9 @@ As the main operator of his business, John wants to track of his sales and reven
 
 \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|}
 
-% \hline
-% \multicolumn{1}{|c|}{\textbf{Datum}} &
-% \multicolumn{1}{c|}{\textbf{Form of Screen}} \\
-% \hline
-% \endfirsthead
-
-% \begin{table} \centering
-%     \begin{tabular}{@{} cl*{10}c @{}}
-
 \hline
 \multicolumn{1}{|c|}{Datum} &
-\multicolumn{9}{c|}{Form or Screen} \\[2ex]
+\multicolumn{9}{c|}{Form or Screen} \\[1ex]
 
 \hline
 & \rot{Video Metadata View} &
@@ -285,20 +281,148 @@ so\_upload\_date        &                & x &   &   &   &   &   &   &   \\ \hli
 so\_url                 &                & x &   &   &   &   &   &   &   \\ \hline
 
 \end{longtable}
-% \end{tabular}
-% \end{table}
 
+\clearpage
 \section{Cross-reference table}
+Incomplete?
 
 %---    Enterprise Database Design    ---%
 \chapter{Enterprise Database Design}
 
 \section{Logical model of the Enterprise}
-\subsection{List of Entities and Attributes}
-\subsection{List of Relationships and Attributes}
-\subsection{Entity-Relationship diagram of the Enterprise}
 
+\subsection{List of Entities and Attributes}
+
+\begin{enumerate}
+
+\item Media
+    \begin{itemize*}
+      \item m\_id
+    \end{itemize*}
+
+\item Music Video
+    \begin{itemize*}
+      \item mv\_title
+      \item mv\_url                              (url video is hosted at)
+      \item mv\_upload\_date
+    \end{itemize*}
+
+\item Song
+    \begin{itemize*}
+      \item so\_title
+      \item so\_artist
+      \item so\_url                              (url song is hosted at)
+      \item so\_upload\_date
+    \end{itemize*}
+
+\item Interaction
+    \begin{itemize*}
+      \item i\_date
+    \end{itemize*}
+
+\item Play
+
+\item Redirect
+    \begin{itemize*}
+      \item to              (``YouTube'' or ``SoundCloud'')
+    \end{itemize*}
+
+\item Consumer
+    \begin{itemize*}
+      \item c\_id
+      \item c\_firstname
+      \item c\_lastname
+      \item c\_email
+    \end{itemize*}
+
+\item Physical Consumer
+    \begin{itemize*}
+      \item pc\_address\_line\_1
+      \item pc\_address\_line\_2
+      \item pc\_country
+      \item pc\_state
+      \item pc\_phone
+    \end{itemize*}
+
+\item Digital Consumer
+    \begin{itemize*}
+      \item dc\_phone                        (for confirmation, optional)
+      \item dc\_country                      (optional)
+    \end{itemize*}
+
+\item Purchase
+    \begin{itemize*}
+      \item sale\_id
+      \item sale\_date              (datetime)
+      \item sale\_status            is Received, Shipped or Fulfilled
+    \end{itemize*}
+
+\item Line Item
+    \begin{itemize*}
+      \item quantity
+    \end{itemize*}
+
+\item Good
+    \begin{itemize*}
+      \item g\_sku
+      \item g\_name
+      \item g\_description
+      \item g\_price
+    \end{itemize*}
+
+\item Digital Good
+    \begin{itemize*}
+      \item dg\_is\_frozen            (boolean, used to prevent ordering)
+    \end{itemize*}
+
+\item Physical Good
+    \begin{itemize*}
+      \item pg\_color
+      \item pg\_size
+      \item pg\_quantity\_available
+    \end{itemize*}
+
+\end{enumerate}
+
+* - A datetime is an instant in time. Has date information and time-of-day information. Example: 2014-09-06T15:35:58+00:00 (September 6, 2014, 3:35:58pm)
+
+\clearpage
+\subsection{List of Relationships and Attributes}
+
+\noindent\textbf{Media Relationships}
+\begin{enumerate}
+\item MUSIC\_VIDEO has many INTERACTION
+\item INTERACTION has 1 MUSIC\_VIDEO
+\item SONG has many INTERACTION
+\item INTERACTION has 1 SONG
+\item INTERACTION is a PLAY
+\item INTERACTION is a REDIRECT
+\end{enumerate}
+
+\noindent\textbf{Sales Relationships}
+\begin{enumerate}
+\item CONSUMER is a PHYSICAL\_CONSUMER
+\item CONSUMER is a DIGITAL\_CONSUMER
+\item CONSUMERS make many PURCHASE
+\item PURCHASE has 1 CUSTOMER
+\item PURCHASE has many LINE\_ITEM
+\item PURCHASE has 1 STATUS
+\item STATUS is applicable to 1 PURCHASE
+\item LINE\_ITEM belongs to 1 PURCHASE
+\item LINE\_ITEM has 1 GOOD
+\item GOOD can appear in many LINE\_ITEM
+\item GOOD is a DIGITAL\_GOOD
+\item GOOD is a PHYSICAL\_GOOD
+\end{enumerate}
+
+\clearpage
+\subsection{Entity-Relationship diagram of the Enterprise}
+\includegraphics[]{ERB.png}
+-ZK: will upgrade resolution next time...
+
+\clearpage
 \section{Conceptual model of the enterprise}
+
 \section{Table dictionary}
 \section{Attribute dictionary}
 
