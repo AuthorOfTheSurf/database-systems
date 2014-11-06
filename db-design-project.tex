@@ -15,6 +15,9 @@
 % Lossless .png format expected for figures
 \DeclareGraphicsExtensions{.png}
 
+% \verbatiminput command (\begin{verbatim} is standard lib)
+\usepackage{verbatim}
+
 \newcommand*\rot{\rotatebox{90}}
 
 
@@ -195,6 +198,7 @@ As the main operator of his business, John wants to track of his sales and reven
  
 \end{enumerate}
 
+\clearpage
 \section{Assumptions}
 \begin{enumerate}
 \item Forms are used to add items to the site
@@ -203,6 +207,7 @@ As the main operator of his business, John wants to track of his sales and reven
 \item Only customers in the ‘US’ are allowed to order physical goods
 \end{enumerate}
 
+\clearpage
 \section{User-oriented data dictionary}
 
 \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|}
@@ -423,18 +428,91 @@ Incomplete?
 \clearpage
 \section{Conceptual model of the enterprise}
 
+\begin{verbatim}
+MEDIA(m_id)
+
+MUSIC_VIDEO(m_id, mv_title, mv_url, mv_upload_date)
+    PK/FK: m_id
+    CK: m_id, mv_title, mv_url
+
+SONG(m_id, so_title, so_artist, so_url, so_upload_date)
+    PK/FK: m_id
+    CK: m_id, so_title, so_url
+
+PLAY(m_id, i_datetime)
+    PK/FK: m_id
+    CK: m_id
+
+REDIRECT(m_id, m_to)
+    PK/FK: m_id
+    CK: m_id
+
+CONSUMER(c_id, c_firstname, c_lastname, c_email)
+    PK: c_id
+    CK: c_id, c_email
+
+PHYSICAL_CONSUMER(
+  c_id
+, pc_address_line_1
+, pc_address_line_2
+, pc_country
+, pc_state
+, pc_phone
+)
+    PK/FK: c_id
+    CK: c_id, pc_phone
+
+DIGITAL_CONSUMER(
+  c_id
+, pc_phone
+, pc_country
+)
+    PK/FK: c_id
+    CK: c_id, pc_phone
+
+PURCHASE(p_id, c_id, p_date)
+    PK/FK: p_id
+    CK: p_id, c_id
+
+
+
+LINE_ITEM(p_id, g_id, quantity)
+    PK: p_id
+    CK: p_id
+    FK: p_id, g_id
+
+GOOD(g_name, g_description, g_sku, g_price)
+    PK: g_sku
+    CK: g_name, g_sku
+
+DIGITAL_GOOD(g_sku, dg_is_frozen)
+    PK: g_sku
+    CK: g_sku
+
+PHYSICAL_GOOD(g_sku, pg_color, pg_size, pg_quantity_available)
+    PK/FK: g_sku
+    CK: g_sku
+\end{verbatim}
+
+\clearpage
 \section{Table dictionary}
+
+\clearpage
 \section{Attribute dictionary}
 
 %---    Database and Query Definition    ---%
 \chapter{Database and Query Definition}
 
 \section{Database Definition}
-    SQL DDL for your database objects.
+    \verbatiminput{online-music-business.sql}
+
+\clearpage
 \section{Database Queries}
     English version of 10+ database queries, and the SQL DML for each database query
+
+\clearpage
 \section{Design Tradeoffs and Limitations}
-    Discussion of the limitations of your design.
+Not too many limitation currently. I recently had add a \texttt{MEDIA} parent entity for videos and songs.
 
 %---    Database Integrity and Security    ---%
 \chapter{Database Integrity and Security}
