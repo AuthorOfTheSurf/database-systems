@@ -1,5 +1,6 @@
 \documentclass[11pt, a4paper]{report}
 \usepackage{fullpage}
+\usepackage{mdwlist}
 \title{Modeling an Online Music Business}
 \author{Zane Kansil\\ Loyola Marymount University\\ Database Systems}
 
@@ -73,6 +74,111 @@ As the main operator of his business, John wants to track of his sales and reven
 \chapter{Definition of Environment}
 
 \section{Input and Report forms}
+
+% Number forms
+\begin{enumerate}
+\item Video Metadata View
+    % itemize* is a more compacted list
+    % imported by mdwlist
+    \begin{itemize*}
+      \item Video Name
+      \item Video (hosted at) URL
+      \item Number of plays
+      \item Total plays
+      \item Plays Today
+      \item Plays Yesterday
+      \item Total redirects to YouTube
+    \end{itemize*}
+
+\item Song Metadata View
+    \begin{itemize*}
+      \item Song Name
+      \item Song Artist
+      \item Song (hosted at) URL
+      \item Total plays
+      \item Plays Today
+      \item Plays Yesterday
+      \item Total redirects to SoundCloud
+    \end{itemize*}
+
+\item Add New Physical good
+    \begin{itemize*}
+      \item Name
+      \item Description Paragraph
+      \item Upload/Choose an Image
+      \item Color (optional)
+      \item Size (optional)
+      \item Price (in USD)
+      \item Starting stock/Current stock
+    \end{itemize*}
+
+\item Add New Digital good
+    \begin{itemize*}
+      \item Name
+      \item Description Paragraph
+      \item Upload/Choose an Image
+      \item Price (in USD)
+    \end{itemize*}
+
+\item Physical Good Admin
+    \begin{itemize*}
+      \item Name (editable)
+      \item SKU (generated from original name, can re-generate)
+      \item Description Paragraph (truncated, editable)
+      \item Image (editable)
+      \item Color (editable)
+      \item Price (editable)
+      \item Quantity Available (editable, warning message)
+      \item Total sales
+    \end{itemize*}
+
+\item Digital Good Admin
+    \begin{itemize*}
+      \item Name (editable)
+      \item SKU (generated from original name, can re-generate)
+      \item Description Paragraph (truncated, editable)
+      \item Image (editable)
+      \item Price (editable)
+      \item Freeze sales (boolean, editable, default false)
+    \end{itemize*}
+
+\item Physical Consumer details entry
+    \begin{itemize*}
+      \item First Name
+      \item Last Name
+      \item Email
+      \item Phone (optional)
+      \item Address Line 1
+      \item Address Line 2 (optional)
+      \item Zip Code
+      \item Country (un-settable, value is ‘US’)
+      \item State (dropdown)
+    \end{itemize*}
+
+\item Digital Consumer details entry
+    \begin{itemize*}
+      \item First Name
+      \item Last Name (optional)
+      \item Email
+      \item Phone (optional)
+      \item Country
+    \end{itemize*}
+
+\item Sales table
+    \begin{itemize*}
+      \item Item id
+      \item Item SKU
+      \item Digital Sale (true or false)
+      \item Physical Sale (true or false)
+      \item Status (received, shipped, fulfilled)
+      \item Quantity
+      \item Unit Price
+      \item Total Order Cost
+      \item Date received
+    \end{itemize*}
+ 
+\end{enumerate}
+
 \section{Assumptions}
 \section{User-oriented data dictionary}
 \section{Cross-reference table}
@@ -96,7 +202,6 @@ As the main operator of his business, John wants to track of his sales and reven
     SQL DDL for your database objects.
 \section{Database Queries}
     English version of 10+ database queries, and the SQL DML for each database query
-\section{Review sign-off sheet}
 \section{Design Tradeoffs and Limitations}
     Discussion of the limitations of your design.
 
