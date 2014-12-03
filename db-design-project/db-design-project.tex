@@ -215,7 +215,7 @@ As the main operator of his business, John wants to track of his sales and reven
 \begin{longtable}{|l|p{10cm}|}
 
 \hline
-\textbf{Datum}          & \textbf{Information Definition}                                                                                                                                                \\ \hline
+\textbf{Datum}          & \textbf{Information Definition}                                                                                                                                       \\ \hline
 c\_email                & Email address                                                                                                                                                         \\ \hline
 c\_first\_name          & First name of customer                                                                                                                                                \\ \hline
 c\_id                   & Computer-assigned identifier                                                                                                                                          \\ \hline
@@ -229,6 +229,7 @@ g\_name                 & Name of physical good                                 
 g\_price                & Price of good in USD pennies                                                                                                                                          \\ \hline
 g\_sku                  & Uniquely identifies a class of item for sale. For physical goods this is specific for each color color size.                                                          \\ \hline
 i\_date                 & Datetime this interaction was logged                                                                                                                                  \\ \hline
+li\_number              & Identifies the particular line item amongst a list of line items. Line items in a purchase are numbered sequentially in this manner                                   \\ \hline
 li\_quantity            & Number of units sold in the line item. A series of line items composes a purchase.                                                                                    \\ \hline
 m\_id                   & Media identifier. Identifies a Song or Video hosted on the site.                                                                                                      \\ \hline
 mv\_plays               & Total plays originating at the site. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
@@ -297,6 +298,7 @@ g\_name                 &   &   & x & x & x & x &   &   & x &   \\ \hline
 g\_price                &   &   & x & x & x & x &   &   & x &   \\ \hline
 g\_sku                  &   &   &   &   & x & x &   &   & x &   \\ \hline
 i\_date                 &   &   &   &   &   &   &   &   &   & x \\ \hline
+li\_number              &   &   &   &   &   &   &   &   & x &   \\ \hline
 li\_quantity            &   &   &   &   &   &   &   &   & x &   \\ \hline
 m\_id                   &   &   &   &   &   &   &   &   &   & x \\ \hline
 mv\_plays               & x &   &   &   &   &   &   &   &   &   \\ \hline
