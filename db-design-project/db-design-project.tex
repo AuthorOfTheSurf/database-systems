@@ -345,91 +345,91 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 \begin{enumerate}
 
 \item Media
-    \begin{itemize*}
-      \item m\_id
-    \end{itemize*}
+  \begin{itemize*}
+    \item m\_id
+  \end{itemize*}
 
 \item Music Video
-    \begin{itemize*}
-      \item mv\_title
-      \item mv\_url                              (url video is hosted at)
-      \item mv\_upload\_date
-    \end{itemize*}
+  \begin{itemize*}
+    \item mv\_title
+    \item mv\_url (url video is hosted at)
+    \item mv\_upload\_date
+  \end{itemize*}
 
 \item Song
-    \begin{itemize*}
-      \item so\_title
-      \item so\_artist
-      \item so\_url                              (url song is hosted at)
-      \item so\_upload\_date
-    \end{itemize*}
-
-\item Interaction
-    \begin{itemize*}
-      \item i\_date
-    \end{itemize*}
+  \begin{itemize*}
+    \item so\_title
+    \item so\_artist
+    \item so\_url (url song is hosted at)
+    \item so\_upload\_date
+  \end{itemize*}
 
 \item Play
+  \begin{itemize*}
+    \item i\_date
+  \end{itemize*}
 
 \item Redirect
-    \begin{itemize*}
-      \item to              (``YouTube'' or ``SoundCloud'')
-    \end{itemize*}
+  \begin{itemize*}
+    \item i\_date
+    \item redirect\_url (``YouTube'' or ``SoundCloud'')
+  \end{itemize*}
 
 \item Consumer
-    \begin{itemize*}
-      \item c\_id
-      \item c\_firstname
-      \item c\_lastname
-      \item c\_email
-    \end{itemize*}
+  \begin{itemize*}
+    \item c\_id
+    \item c\_firstname
+    \item c\_lastname
+    \item c\_email
+    \item c\_phone
+  \end{itemize*}
 
 \item Physical Consumer
-    \begin{itemize*}
-      \item pc\_address\_line\_1
-      \item pc\_address\_line\_2
-      \item pc\_country
-      \item pc\_state
-      \item pc\_phone
-    \end{itemize*}
+  \begin{itemize*}
+    \item pc\_address\_line\_1
+    \item pc\_address\_line\_2
+    \item pc\_country
+    \item pc\_state
+  \end{itemize*}
 
 \item Digital Consumer
-    \begin{itemize*}
-      \item dc\_phone                        (for confirmation, optional)
-      \item dc\_country                      (optional)
-    \end{itemize*}
+  \begin{itemize*}
+    \item dc\_country (optional)
+  \end{itemize*}
 
 \item Purchase
-    \begin{itemize*}
-      \item sale\_id
-      \item sale\_date              (datetime)
-      \item sale\_status            is Received, Shipped or Fulfilled
-    \end{itemize*}
+  \begin{itemize*}
+    \item sale\_id
+    \item sale\_status (``received'', ``shipped'' or ``fulfilled'')
+    \item sale\_date (datetime)
+    \item sale\_fulfill\_date (datetime)
+  \end{itemize*}
 
 \item Line Item
-    \begin{itemize*}
-      \item quantity
-    \end{itemize*}
+  \begin{itemize*}
+    \item li\_number
+    \item li\_quantity
+  \end{itemize*}
 
 \item Good
-    \begin{itemize*}
-      \item g\_sku
-      \item g\_name
-      \item g\_description
-      \item g\_price
-    \end{itemize*}
+  \begin{itemize*}
+    \item g\_sku
+    \item g\_name
+    \item g\_description
+    \item g\_price
+  \end{itemize*}
 
 \item Digital Good
-    \begin{itemize*}
-      \item dg\_is\_frozen            (boolean, used to prevent ordering)
-    \end{itemize*}
+  \begin{itemize*}
+    \item dg\_is\_available (boolean, used to prevent ordering)
+  \end{itemize*}
 
 \item Physical Good
-    \begin{itemize*}
-      \item pg\_color
-      \item pg\_size
-      \item pg\_quantity\_available
-    \end{itemize*}
+  \begin{itemize*}
+    \item pg\_color
+    \item pg\_size
+    \item pg\_quantity\_available
+  \end{itemize*}
 
 \end{enumerate}
 
