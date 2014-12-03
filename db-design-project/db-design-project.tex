@@ -210,6 +210,55 @@ As the main operator of his business, John wants to track of his sales and reven
 \clearpage
 \section{User-oriented data dictionary}
 
+% `p{<width>}` instread of `l` allows for multi-line text within a cell
+% because it fixes the width of the cell rather than stretching to the longest element
+\begin{longtable}{|l|p{10cm}|}
+
+\hline
+\textbf{Datum}          & \textbf{Information Definition}                                                                                                                                                \\ \hline
+c\_email                & Email address                                                                                                                                                         \\ \hline
+c\_first\_name          & First name of customer                                                                                                                                                \\ \hline
+c\_id                   & Computer-assigned identifier                                                                                                                                          \\ \hline
+c\_last\_name           & Last name of customer                                                                                                                                                 \\ \hline
+c\_phone                & Phone number. All digits, no dashes or spaces.                                                                                                                        \\ \hline
+dc\_country             & Country which customer resides. Optional and may be any country.                                                                                                      \\ \hline
+dg\_is\_available       & Reflects whether or not this good is available for purchase. Set to `false' to prevent customers from soliciting a copy                                               \\ \hline
+g\_description          & Description of good                                                                                                                                                   \\ \hline
+g\_image\_url           & URL of image for good                                                                                                                                                 \\ \hline
+g\_name                 & Name of physical good                                                                                                                                                 \\ \hline
+g\_price                & Price of good in USD pennies                                                                                                                                          \\ \hline
+g\_sku                  & Uniquely identifies a class of item for sale. For physical goods this is specific for each color color size.                                                          \\ \hline
+i\_date                 & Datetime this interaction was logged                                                                                                                                  \\ \hline
+li\_quantity            & Number of units sold in the line item. A series of line items composes a purchase.                                                                                    \\ \hline
+m\_id                   & Media identifier. Identifies a Song or Video hosted on the site.                                                                                                      \\ \hline
+mv\_plays               & Total plays originating at the site. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
+mv\_plays\_today        & Plays originating at the site today. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
+mv\_redirects           & Number of redirects to YouTube (which occurs when the embedded video is clicked by a viewer). This is derived from the log of REDIRECT entries pointing to this song. \\ \hline
+mv\_title               & Music video’s title, identical to it’s title on Youtube                                                                                                               \\ \hline
+mv\_upload\_date        & Date/time that the video was uploaded to YouTube                                                                                                                      \\ \hline
+mv\_url                 & YouTube URL that the video is hosted at                                                                                                                               \\ \hline
+pc\_address\_line\_1    & Address of customer                                                                                                                                                   \\ \hline
+pc\_address\_line\_2    & Second line of customer address                                                                                                                                       \\ \hline
+pc\_country             & Country which customer resides. This will always be `US'                                                                                                              \\ \hline
+pc\_state               & State which customer resides                                                                                                                                          \\ \hline
+pc\_zip\_code           & Zip code. 5 digits in the US.                                                                                                                                         \\ \hline
+pg\_color               & Color of good                                                                                                                                                         \\ \hline
+pg\_quantity\_available & Current quantity available. This is an editable field so users should take care not to set the field inappropriately.                                                 \\ \hline
+pg\_size                & Size of good, either `S', `M', `L', ..., or a numbered size, or `OSFA' (one size fits all)                                                                            \\ \hline
+redirect\_url           & The non-local url that the redirect sent the user to. Music videos redirect to a Soundcloud uri, Videos redirect to a Youtube uri.                                    \\ \hline
+sale\_date              & Datetime this sale was logged                                                                                                                                         \\ \hline
+sale\_fulfill\_date     & Date this sale was set to `fulfilled'                                                                                                                                 \\ \hline
+sale\_id                & Sales/transaction identifier                                                                                                                                          \\ \hline
+sale\_status            & The shipping status, `recieved', `shipped' or `fulfilled'                                                                                                             \\ \hline
+so\_artist              & Artist of song, including features                                                                                                                                    \\ \hline
+so\_plays               & Total plays originating at the site. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
+so\_plays\_today        & Plays on the site today. This is derived from the log of PLAY entries pointing to this song.                                                                          \\ \hline
+so\_redirects           & Redirects to SoundCloud (triggered by clicks on the embedded player). This is derived from the log of REDIRECT entries pointing to this song.                         \\ \hline
+so\_title               & Title of song                                                                                                                                                         \\ \hline
+so\_upload\_date        & Date/time that the video was uploaded to SoundCloud                                                                                                                   \\ \hline
+so\_url                 & SoundCloud URL that the video is hosted at                                                                                                                            \\ \hline
+
+\end{longtable}
 
 
 \clearpage
