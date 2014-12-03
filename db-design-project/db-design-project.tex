@@ -215,80 +215,67 @@ As the main operator of his business, John wants to track of his sales and reven
 \clearpage
 \section{Cross-reference table}
 
-\begin{longtable}{|l|l|l|l|l|l|l|l|l|l|}
+\begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|}
 
 \hline
 \multicolumn{1}{|c|}{Datum} &
-\multicolumn{9}{c|}{Form or Screen} \\[1ex]
+\multicolumn{10}{c|}{Form or Screen} \\[1ex]
 
 \hline
-& \rot{Video Metadata View} &
+&   % empty label block
+\rot{Video Metadata View} &
 \rot{Song Metadata View} &
 \rot{Add New Physical good} &
 \rot{Add New Digital good} &
 \rot{Physical Good Admin} &
 \rot{Digital Good Admin} &
-\rot{Physical Consumer details entry} &
-\rot{Digital Consumer details entry} &
-\rot{Sales table} \\
+\rot{Physical Consumer Admin View} &
+\rot{Digital Consumer Admin View} &
+\rot{Transaction Log} &
+\rot{Interaction Log} \\
 \hline
 
-dc\_country             &                &   &   &   &   & x &   & x &   \\ \hline
-dc\_first\_name         &                &   &   &   &   & x &   & x &   \\ \hline
-dc\_id                  &                &   &   &   &   & x &   &   &   \\ \hline
-dc\_last\_name          &                &   &   &   &   & x &   & x &   \\ \hline
-dc\_phone               &                &   &   &   &   & x &   & x &   \\ \hline
-dg\_description         &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_image               &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_is\_available       &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_name                &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_price               &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_sales               &                &   &   & x &   &   &   &   &   \\ \hline
-dg\_sku                 &                &   &   & x &   &   &   &   & x \\ \hline
-mv\_plays               & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_plays\_today        & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_plays\_yesterday    & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_redirects           & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_title               & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_upload\_date        & x              &   &   &   &   &   &   &   &   \\ \hline
-mv\_url                 & x              &   &   &   &   &   &   &   &   \\ \hline
-pc\_address\_line\_1    &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_address\_line\_2    &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_country             &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_email               &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_first\_name         &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_id                  &                &   &   &   & x &   &   &   &   \\ \hline
-pc\_last\_name          &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_phone               &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_state               &                &   &   &   & x &   & x &   &   \\ \hline
-pc\_zip\_code           &                &   &   &   & x &   & x &   &   \\ \hline
-pg\_color               &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_description         &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_image               &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_name                &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_price               &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_quantity\_available &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_sales               &                &   &   &   &   &   &   &   &   \\ \hline
-pg\_size                &                &   & x &   &   &   &   &   &   \\ \hline
-pg\_sku                 &                &   & x &   &   &   &   &   & x \\ \hline
-sa\_digital\_sale       &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_filfill\_date       &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_id                  &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_physical\_sale      &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_price               &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_quantity            &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_sku                 &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_status              &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_timestamp           &                &   &   &   &   &   &   &   & x \\ \hline
-sa\_total\_cost         &                &   &   &   &   &   &   &   & x \\ \hline
-so\_artist              &                & x &   &   &   &   &   &   &   \\ \hline
-so\_plays               &                & x &   &   &   &   &   &   &   \\ \hline
-so\_plays\_today        &                & x &   &   &   &   &   &   &   \\ \hline
-so\_plays\_yesterday    &                & x &   &   &   &   &   &   &   \\ \hline
-so\_redirects           &                & x &   &   &   &   &   &   &   \\ \hline
-so\_title               &                & x &   &   &   &   &   &   &   \\ \hline
-so\_upload\_date        &                & x &   &   &   &   &   &   &   \\ \hline
-so\_url                 &                & x &   &   &   &   &   &   &   \\ \hline
+c\_email                &   &   &   &   &   &   & x & x &   &   \\ \hline
+c\_first\_name          &   &   &   &   &   &   & x & x &   &   \\ \hline
+c\_id                   &   &   &   &   &   &   & x & x &   &   \\ \hline
+c\_last\_name           &   &   &   &   &   &   & x & x &   &   \\ \hline
+c\_phone                &   &   &   &   &   &   & x & x &   &   \\ \hline
+dc\_country             &   &   &   &   &   &   &   & x &   &   \\ \hline
+dg\_is\_available       &   &   &   & x &   & x &   &   & x &   \\ \hline
+g\_description          &   &   & x & x & x & x &   &   &   &   \\ \hline
+g\_image\_url           &   &   & x & x & x & x &   &   &   &   \\ \hline
+g\_name                 &   &   & x & x & x & x &   &   & x &   \\ \hline
+g\_price                &   &   & x & x & x & x &   &   & x &   \\ \hline
+g\_sku                  &   &   &   &   & x & x &   &   & x &   \\ \hline
+i\_date                 &   &   &   &   &   &   &   &   &   & x \\ \hline
+li\_quantity            &   &   &   &   &   &   &   &   & x &   \\ \hline
+m\_id                   &   &   &   &   &   &   &   &   &   & x \\ \hline
+mv\_plays               & x &   &   &   &   &   &   &   &   &   \\ \hline
+mv\_plays\_today        & x &   &   &   &   &   &   &   &   &   \\ \hline
+mv\_redirects           & x &   &   &   &   &   &   &   &   &   \\ \hline
+mv\_title               & x &   &   &   &   &   &   &   &   & x \\ \hline
+mv\_upload\_date        & x &   &   &   &   &   &   &   &   &   \\ \hline
+mv\_url                 & x &   &   &   &   &   &   &   &   &   \\ \hline
+pc\_address\_line\_1    &   &   &   &   &   &   & x &   &   &   \\ \hline
+pc\_address\_line\_2    &   &   &   &   &   &   & x &   &   &   \\ \hline
+pc\_country             &   &   &   &   &   &   & x &   &   &   \\ \hline
+pc\_state               &   &   &   &   &   &   & x &   &   &   \\ \hline
+pc\_zip\_code           &   &   &   &   &   &   & x &   &   &   \\ \hline
+pg\_color               &   &   & x &   & x &   &   &   & x &   \\ \hline
+pg\_quantity\_available &   &   & x &   & x &   &   &   &   &   \\ \hline
+pg\_size                &   &   & x &   & x &   &   &   & x &   \\ \hline
+redirect\_url           &   &   &   &   &   &   &   &   &   &   \\ \hline
+sale\_date              &   &   &   &   &   &   &   &   & x &   \\ \hline
+sale\_fulfill\_date     &   &   &   &   &   &   &   &   & x &   \\ \hline
+sale\_id                &   &   &   &   &   &   &   &   & x &   \\ \hline
+sale\_status            &   &   &   &   &   &   &   &   & x &   \\ \hline
+so\_artist              &   & x &   &   &   &   &   &   &   &   \\ \hline
+so\_plays               &   & x &   &   &   &   &   &   &   &   \\ \hline
+so\_plays\_today        &   & x &   &   &   &   &   &   &   &   \\ \hline
+so\_redirects           &   & x &   &   &   &   &   &   &   &   \\ \hline
+so\_title               &   & x &   &   &   &   &   &   &   & x \\ \hline
+so\_upload\_date        &   & x &   &   &   &   &   &   &   &   \\ \hline
+so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \end{longtable}
 
