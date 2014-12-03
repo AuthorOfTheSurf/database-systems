@@ -98,103 +98,108 @@ As the main operator of his business, John wants to track of his sales and reven
 % Number forms
 \begin{enumerate}
 \item Video Metadata View
-    % itemize* is a more compacted list
-    % imported by mdwlist
-    \begin{itemize*}
-      \item Video Name
-      \item Video (hosted at) URL
-      \item Number of plays
-      \item Total plays
-      \item Plays Today
-      \item Plays Yesterday
-      \item Total redirects to YouTube
-    \end{itemize*}
+    % itemize* is a more compacted list, imported by mdwlist
+  \begin{itemize*}
+    \item Video Name
+    \item Video (hosted at) URL
+    \item Number of plays
+    \item Total plays
+    \item Plays Today
+    \item Total redirects to YouTube
+  \end{itemize*}
 
 \item Song Metadata View
-    \begin{itemize*}
-      \item Song Name
-      \item Song Artist
-      \item Song (hosted at) URL
-      \item Total plays
-      \item Plays Today
-      \item Plays Yesterday
-      \item Total redirects to SoundCloud
-    \end{itemize*}
+  \begin{itemize*}
+    \item Song Name
+    \item Song Artist
+    \item Song (hosted at) URL
+    \item Total plays
+    \item Plays Today
+    \item Total redirects to SoundCloud
+  \end{itemize*}
 
 \item Add New Physical good
-    \begin{itemize*}
-      \item Name
-      \item Description Paragraph
-      \item Upload/Choose an Image
-      \item Color (optional)
-      \item Size (optional)
-      \item Price (in USD)
-      \item Current stock on hand
-    \end{itemize*}
+  \begin{itemize*}
+    \item Name
+    \item Description Paragraph
+    \item Upload/Choose an Image
+    \item Color (optional)
+    \item Size (optional)
+    \item Price (in USD)
+    \item Current stock on hand
+  \end{itemize*}
 
 \item Add New Digital good
-    \begin{itemize*}
-      \item Name
-      \item Description Paragraph
-      \item Upload/Choose an Image
-      \item Price (in USD)
-    \end{itemize*}
+  \begin{itemize*}
+    \item Name
+    \item Description Paragraph
+    \item Upload/Choose an Image
+    \item Price (in USD)
+  \end{itemize*}
 
-\item Physical Good Admin
-    \begin{itemize*}
-      \item Name (editable)
-      \item SKU (generated from original name, can re-generate)
-      \item Description Paragraph (truncated, editable)
-      \item Image (editable)
-      \item Color (editable)
-      \item Price (editable)
-      \item Quantity Available (editable, warning message)
-      \item Total sales
-    \end{itemize*}
+\item Physical Good Admin View
+  \begin{itemize*}
+    \item Name
+    \item Good SKU
+    \item Good description (editable)
+    \item Good's image url (editable)
+    \item Price (in USD)
+    \item Color of Good (editable)
+    \item Quantity
+    \item Size of Good
+  \end{itemize*}
 
-\item Digital Good Admin
-    \begin{itemize*}
-      \item Name (editable)
-      \item SKU (generated from original name, can re-generate)
-      \item Description Paragraph (truncated, editable)
-      \item Image (editable)
-      \item Price (editable)
-      \item Freeze sales (boolean, editable, default false)
-    \end{itemize*}
+\item Digital Good Admin View
+  \begin{itemize*}
+    \item Name
+    \item Good SKU
+    \item Good description (editable)
+    \item Good's image url (editable)
+    \item Price (in USD)
+    \item Available (togglable)
+  \end{itemize*}
 
-\item Physical Consumer details entry
-    \begin{itemize*}
-      \item First Name
-      \item Last Name
-      \item Email
-      \item Phone (optional)
-      \item Address Line 1
-      \item Address Line 2 (optional)
-      \item Zip Code
-      \item Country (un-settable, value is ‘US’)
-      \item State (dropdown)
-    \end{itemize*}
+\item Physical Consumer Admin View
+  \begin{itemize*}
+    \item Customer id
+    \item First Name (editable)
+    \item Last Name (editable)
+    \item Customer Phone Number (editable)
+    \item Address Line 1 (editable)
+    \item Address Line 2 (editable)
+    \item Customer Country (fixed to `US')
+    \item Customer State (US states including `HI' and `AL')
+    \item Customer Zip Code (editable)
+  \end{itemize*}
 
-\item Digital Consumer details entry
-    \begin{itemize*}
-      \item First Name
-      \item Last Name (optional)
-      \item Email
-      \item Phone (optional)
-      \item Country
-    \end{itemize*}
+\item Digital Consumer Admin View
+  \begin{itemize*}
+    \item Customer id
+    \item First Name (editable)
+    \item Last Name (editable)
+    \item Customer Phone Number (editable)
+    \item Customer Country (editable)
+  \end{itemize*}
 
-\item Sales table
-    \begin{itemize*}
-      \item Item id
-      \item Item SKU
-      \item Sale type (\texttt{digital} or \texttt{physical})
-      \item Status (\texttt{received}, \texttt{shipped} or \texttt{fulfilled})
-      \item Quantity
-      \item Unit Price
-      \item Total Order Cost
-      \item Date received
-    \end{itemize*}
+\item Transaction Log
+  \begin{itemize*}
+    \item Item SKU
+    \item Sale type (\texttt{digital} or \texttt{physical}, derived)
+    \item Status (\texttt{received}, \texttt{shipped} or \texttt{fulfilled})
+    \item Availability of Good
+    \item Quantity (of each line item)
+    \item Unit Price (of each line item)
+    \item Line number (each line item is numbered sequentially)
+    \item Total Order Cost (derived)
+    \item Sale date (time that purchase was made)
+  \end{itemize*}
+
+\item Interaction Log
+  \begin{itemize*}
+    \item Interaction timestamp
+    \item Media identifier (interaction was made against this Song or Video)
+    \item Title of Media
+  \end{itemize*}
  
 \end{enumerate}
 
@@ -236,7 +241,7 @@ mv\_plays               & Total plays originating at the site. This is derived f
 mv\_plays\_today        & Plays originating at the site today. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
 mv\_redirects           & Number of redirects to YouTube (which occurs when the embedded video is clicked by a viewer). This is derived from the log of REDIRECT entries pointing to this song. \\ \hline
 mv\_title               & Music video’s title, identical to it’s title on Youtube                                                                                                               \\ \hline
-mv\_upload\_date        & Date/time that the video was uploaded to YouTube                                                                                                                      \\ \hline
+mv\_upload\_date        & Datetime that the video was uploaded to YouTube                                                                                                                      \\ \hline
 mv\_url                 & YouTube URL that the video is hosted at                                                                                                                               \\ \hline
 pc\_address\_line\_1    & Address of customer                                                                                                                                                   \\ \hline
 pc\_address\_line\_2    & Second line of customer address                                                                                                                                       \\ \hline
@@ -248,7 +253,7 @@ pg\_quantity\_available & Current quantity available. This is an editable field 
 pg\_size                & Size of good, either `S', `M', `L', ..., or a numbered size, or `OSFA' (one size fits all)                                                                            \\ \hline
 redirect\_url           & The non-local url that the redirect sent the user to. Music videos redirect to a Soundcloud uri, Videos redirect to a Youtube uri.                                    \\ \hline
 sale\_date              & Datetime this sale was logged                                                                                                                                         \\ \hline
-sale\_fulfill\_date     & Date this sale was set to `fulfilled'                                                                                                                                 \\ \hline
+sale\_fulfill\_date     & Datetime this sale was set to `fulfilled'                                                                                                                                 \\ \hline
 sale\_id                & Sales/transaction identifier                                                                                                                                          \\ \hline
 sale\_status            & The shipping status, `recieved', `shipped' or `fulfilled'                                                                                                             \\ \hline
 so\_artist              & Artist of song, including features                                                                                                                                    \\ \hline
@@ -256,7 +261,7 @@ so\_plays               & Total plays originating at the site. This is derived f
 so\_plays\_today        & Plays on the site today. This is derived from the log of PLAY entries pointing to this song.                                                                          \\ \hline
 so\_redirects           & Redirects to SoundCloud (triggered by clicks on the embedded player). This is derived from the log of REDIRECT entries pointing to this song.                         \\ \hline
 so\_title               & Title of song                                                                                                                                                         \\ \hline
-so\_upload\_date        & Date/time that the video was uploaded to SoundCloud                                                                                                                   \\ \hline
+so\_upload\_date        & Datetime that the video was uploaded to SoundCloud                                                                                                                   \\ \hline
 so\_url                 & SoundCloud URL that the video is hosted at                                                                                                                            \\ \hline
 
 \end{longtable}
