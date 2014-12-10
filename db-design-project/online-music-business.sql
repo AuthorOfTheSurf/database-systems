@@ -2,7 +2,7 @@
 -- ER/Studio Data Architect 9.6 SQL Code Generation
 -- Project :      zk-online-music-business.DM1
 --
--- Date Created : Tuesday, December 09, 2014 13:41:31
+-- Date Created : Tuesday, December 09, 2014 16:44:51
 -- Target DBMS : MySQL 5.x
 --
 
@@ -11,7 +11,7 @@
 --
 
 CREATE TABLE CUSTOMER(
-    c_id           VARCHAR(20)    NOT NULL,
+    c_id           CHAR(20)       NOT NULL,
     c_firstname    VARCHAR(20)    NOT NULL,
     c_lastname     VARCHAR(20)    NOT NULL,
     c_email        VARCHAR(20)    NOT NULL,
@@ -27,9 +27,9 @@ CREATE TABLE CUSTOMER(
 --
 
 CREATE TABLE DIGITAL_CONSUMER(
-    c_id          VARCHAR(20)    NOT NULL,
+    dc_id         CHAR(20)       NOT NULL,
     dc_country    VARCHAR(20)    NOT NULL,
-    PRIMARY KEY (c_id)
+    PRIMARY KEY (dc_id)
 )ENGINE=INNODB
 ;
 
@@ -40,9 +40,9 @@ CREATE TABLE DIGITAL_CONSUMER(
 --
 
 CREATE TABLE DIGITAL_GOOD(
-    g_sku              VARCHAR(20)    NOT NULL,
-    dg_is_available    BIT(1)         NOT NULL,
-    PRIMARY KEY (g_sku)
+    dg_id              CHAR(20)    NOT NULL,
+    dg_is_available    BIT(1)      NOT NULL,
+    PRIMARY KEY (dg_id)
 )ENGINE=INNODB
 ;
 
@@ -53,7 +53,7 @@ CREATE TABLE DIGITAL_GOOD(
 --
 
 CREATE TABLE GOOD(
-    g_sku            VARCHAR(20)      NOT NULL,
+    g_sku            CHAR(20)         NOT NULL,
     g_name           VARCHAR(255)     NOT NULL,
     g_description    VARCHAR(2048)    NOT NULL,
     g_price          INT              NOT NULL,
@@ -68,8 +68,10 @@ CREATE TABLE GOOD(
 --
 
 CREATE TABLE INTERACTION(
-    i_date    DATETIME       NOT NULL,
-    m_id      VARCHAR(20)
+    i_id      CHAR(20)    NOT NULL,
+    m_id      CHAR(20),
+    i_date    DATETIME    NOT NULL,
+    PRIMARY KEY (i_id)
 )ENGINE=INNODB
 ;
 
@@ -80,10 +82,9 @@ CREATE TABLE INTERACTION(
 --
 
 CREATE TABLE LINE_ITEM(
-    sale_id        VARCHAR(20)    NOT NULL,
-    g_sku          VARCHAR(20)    NOT NULL,
+    sale_id        CHAR(20)    NOT NULL,
+    g_sku          CHAR(20)    NOT NULL,
     li_quantity    INT,
-    li_number      INT,
     PRIMARY KEY (sale_id, g_sku)
 )ENGINE=INNODB
 ;
@@ -95,7 +96,8 @@ CREATE TABLE LINE_ITEM(
 --
 
 CREATE TABLE MEDIA(
-    m_id    VARCHAR(20)    NOT NULL,
+    m_id             CHAR(20)    NOT NULL,
+    m_upload_date    DATETIME,
     PRIMARY KEY (m_id)
 )ENGINE=INNODB
 ;
@@ -107,11 +109,10 @@ CREATE TABLE MEDIA(
 --
 
 CREATE TABLE MUSIC_VIDEO(
-    m_id              VARCHAR(20)     NOT NULL,
-    mv_title          VARCHAR(50)     NOT NULL,
-    mv_upload_date    DATETIME        NOT NULL,
-    mv_url            VARCHAR(100)    NOT NULL,
-    PRIMARY KEY (m_id)
+    mv_id       CHAR(20)        NOT NULL,
+    mv_title    VARCHAR(50)     NOT NULL,
+    mv_url      VARCHAR(100)    NOT NULL,
+    PRIMARY KEY (mv_id)
 )ENGINE=INNODB
 ;
 
@@ -122,12 +123,12 @@ CREATE TABLE MUSIC_VIDEO(
 --
 
 CREATE TABLE PHYSICAL_CONSUMER(
-    c_id                 VARCHAR(20)     NOT NULL,
+    pc_id                CHAR(20)        NOT NULL,
     pc_address_line_1    VARCHAR(255)    NOT NULL,
     pc_address_line_2    VARCHAR(255),
     pc_country           VARCHAR(20)     NOT NULL,
     pc_state             VARCHAR(20)     NOT NULL,
-    PRIMARY KEY (c_id)
+    PRIMARY KEY (pc_id)
 )ENGINE=INNODB
 ;
 
@@ -138,11 +139,11 @@ CREATE TABLE PHYSICAL_CONSUMER(
 --
 
 CREATE TABLE PHYSICAL_GOOD(
-    g_sku                    VARCHAR(20)    NOT NULL,
+    pg_id                    CHAR(20)       NOT NULL,
     pg_color                 VARCHAR(20),
     pg_size                  VARCHAR(20),
     pg_quantity_available    INT            NOT NULL,
-    PRIMARY KEY (g_sku)
+    PRIMARY KEY (pg_id)
 )ENGINE=INNODB
 ;
 
@@ -153,7 +154,8 @@ CREATE TABLE PHYSICAL_GOOD(
 --
 
 CREATE TABLE PLAY(
-
+    pl_id    CHAR(20)    NOT NULL,
+    PRIMARY KEY (pl_id)
 )ENGINE=INNODB
 ;
 
@@ -164,11 +166,11 @@ CREATE TABLE PLAY(
 --
 
 CREATE TABLE PURCHASE(
-    sale_id              VARCHAR(20)    NOT NULL,
+    sale_id              CHAR(20)       NOT NULL,
     sale_status          VARCHAR(20)    NOT NULL,
     sale_fulfill_date    DATETIME,
     sale_date            DATETIME       NOT NULL,
-    c_id                 VARCHAR(20)    NOT NULL,
+    c_id                 CHAR(20)       NOT NULL,
     PRIMARY KEY (sale_id)
 )ENGINE=INNODB
 ;
@@ -180,7 +182,9 @@ CREATE TABLE PURCHASE(
 --
 
 CREATE TABLE REDIRECT(
-    destination    VARCHAR(20)    NOT NULL
+    re_id     CHAR(20)        NOT NULL,
+    re_url    VARCHAR(255)    NOT NULL,
+    PRIMARY KEY (re_id)
 )ENGINE=INNODB
 ;
 
@@ -191,12 +195,11 @@ CREATE TABLE REDIRECT(
 --
 
 CREATE TABLE SONG(
-    m_id              VARCHAR(20)     NOT NULL,
-    so_title          VARCHAR(50)     NOT NULL,
-    so_artist         VARCHAR(20)     NOT NULL,
-    so_upload_date    DATETIME        NOT NULL,
-    so_url            VARCHAR(100)    NOT NULL,
-    PRIMARY KEY (m_id)
+    so_id        CHAR(20)        NOT NULL,
+    so_title     VARCHAR(50)     NOT NULL,
+    so_artist    VARCHAR(20)     NOT NULL,
+    so_url       VARCHAR(100)    NOT NULL,
+    PRIMARY KEY (so_id)
 )ENGINE=INNODB
 ;
 
@@ -207,7 +210,7 @@ CREATE TABLE SONG(
 --
 
 ALTER TABLE DIGITAL_CONSUMER ADD CONSTRAINT RefCUSTOMER2 
-    FOREIGN KEY (c_id)
+    FOREIGN KEY (dc_id)
     REFERENCES CUSTOMER(c_id)
 ;
 
@@ -217,7 +220,7 @@ ALTER TABLE DIGITAL_CONSUMER ADD CONSTRAINT RefCUSTOMER2
 --
 
 ALTER TABLE DIGITAL_GOOD ADD CONSTRAINT RefGOOD7 
-    FOREIGN KEY (g_sku)
+    FOREIGN KEY (dg_id)
     REFERENCES GOOD(g_sku)
 ;
 
@@ -252,7 +255,7 @@ ALTER TABLE LINE_ITEM ADD CONSTRAINT RefGOOD5
 --
 
 ALTER TABLE MUSIC_VIDEO ADD CONSTRAINT RefMEDIA10 
-    FOREIGN KEY (m_id)
+    FOREIGN KEY (mv_id)
     REFERENCES MEDIA(m_id)
 ;
 
@@ -262,7 +265,7 @@ ALTER TABLE MUSIC_VIDEO ADD CONSTRAINT RefMEDIA10
 --
 
 ALTER TABLE PHYSICAL_CONSUMER ADD CONSTRAINT RefCUSTOMER1 
-    FOREIGN KEY (c_id)
+    FOREIGN KEY (pc_id)
     REFERENCES CUSTOMER(c_id)
 ;
 
@@ -272,8 +275,18 @@ ALTER TABLE PHYSICAL_CONSUMER ADD CONSTRAINT RefCUSTOMER1
 --
 
 ALTER TABLE PHYSICAL_GOOD ADD CONSTRAINT RefGOOD6 
-    FOREIGN KEY (g_sku)
+    FOREIGN KEY (pg_id)
     REFERENCES GOOD(g_sku)
+;
+
+
+-- 
+-- TABLE: PLAY 
+--
+
+ALTER TABLE PLAY ADD CONSTRAINT RefINTERACTION12 
+    FOREIGN KEY (pl_id)
+    REFERENCES INTERACTION(i_id)
 ;
 
 
@@ -288,11 +301,21 @@ ALTER TABLE PURCHASE ADD CONSTRAINT RefCUSTOMER3
 
 
 -- 
+-- TABLE: REDIRECT 
+--
+
+ALTER TABLE REDIRECT ADD CONSTRAINT RefINTERACTION13 
+    FOREIGN KEY (re_id)
+    REFERENCES INTERACTION(i_id)
+;
+
+
+-- 
 -- TABLE: SONG 
 --
 
 ALTER TABLE SONG ADD CONSTRAINT RefMEDIA11 
-    FOREIGN KEY (m_id)
+    FOREIGN KEY (so_id)
     REFERENCES MEDIA(m_id)
 ;
 
