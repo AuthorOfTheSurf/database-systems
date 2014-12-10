@@ -220,20 +220,24 @@ As the main operator of his business, John wants to track of his sales and reven
 \begin{longtable}{|l|p{10cm}|}
 
 \hline
-\textbf{Datum}          & \textbf{Information Definition}                                                                                                                                       \\ \hline
+\textbf{Datum}          & \textbf{Information Definition} \\
+
 c\_email                & Email address                                                                                                                                                         \\ \hline
 c\_first\_name          & First name of customer                                                                                                                                                \\ \hline
-c\_id                   & Computer-assigned identifier                                                                                                                                          \\ \hline
+c\_id                   & Identifies a customer                                                                                                                                                 \\ \hline
 c\_last\_name           & Last name of customer                                                                                                                                                 \\ \hline
 c\_phone                & Phone number. All digits, no dashes or spaces.                                                                                                                        \\ \hline
 dc\_country             & Country which customer resides. Optional and may be any country.                                                                                                      \\ \hline
-dg\_is\_available       & Reflects whether or not this good is available for purchase. Set to `false' to prevent customers from soliciting a copy                                               \\ \hline
+dc\_id                  & Alias of `c\_id', used specifically to identify a digital consumer                                                                                                     \\ \hline
+dg\_id                  & Alias of `g\_id', used specifically to identify a digital good                                                                                                         \\ \hline
+dg\_is\_available       & Reflects whether or not this good is available for purchase. Set to ``false'' to prevent customers from soliciting a copy                                               \\ \hline
 g\_description          & Description of good                                                                                                                                                   \\ \hline
 g\_image\_url           & URL of image for good                                                                                                                                                 \\ \hline
 g\_name                 & Name of physical good                                                                                                                                                 \\ \hline
 g\_price                & Price of good in USD pennies                                                                                                                                          \\ \hline
 g\_sku                  & Uniquely identifies a class of item for sale. For physical goods this is specific for each color color size.                                                          \\ \hline
 i\_date                 & Datetime this interaction was logged                                                                                                                                  \\ \hline
+i\_id                   & Interaction identifier.                                                                                                                                               \\ \hline
 li\_number              & Identifies the particular line item amongst a list of line items. Line items in a purchase are numbered sequentially in this manner                                   \\ \hline
 li\_quantity            & Number of units sold in the line item. A series of line items composes a purchase.                                                                                    \\ \hline
 m\_id                   & Media identifier. Identifies a Song or Video hosted on the site.                                                                                                      \\ \hline
@@ -241,27 +245,29 @@ mv\_plays               & Total plays originating at the site. This is derived f
 mv\_plays\_today        & Plays originating at the site today. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
 mv\_redirects           & Number of redirects to YouTube (which occurs when the embedded video is clicked by a viewer). This is derived from the log of REDIRECT entries pointing to this song. \\ \hline
 mv\_title               & Music video’s title, identical to it’s title on Youtube                                                                                                               \\ \hline
-mv\_upload\_date        & Datetime that the video was uploaded to YouTube                                                                                                                      \\ \hline
+mv\_upload\_date        & Date/time that the video was uploaded to YouTube                                                                                                                      \\ \hline
 mv\_url                 & YouTube URL that the video is hosted at                                                                                                                               \\ \hline
 pc\_address\_line\_1    & Address of customer                                                                                                                                                   \\ \hline
 pc\_address\_line\_2    & Second line of customer address                                                                                                                                       \\ \hline
-pc\_country             & Country which customer resides. This will always be `US'                                                                                                              \\ \hline
+pc\_country             & Country which customer resides. This will always be ``US''                                                                                                              \\ \hline
+pc\_id                  & Alias of `c\_id', used specifically to identify a physical consumer                                                                                                    \\ \hline
 pc\_state               & State which customer resides                                                                                                                                          \\ \hline
 pc\_zip\_code           & Zip code. 5 digits in the US.                                                                                                                                         \\ \hline
 pg\_color               & Color of good                                                                                                                                                         \\ \hline
+pg\_id                  & Alias of `g\_id', used specifically to identify a physical good                                                                                                        \\ \hline
 pg\_quantity\_available & Current quantity available. This is an editable field so users should take care not to set the field inappropriately.                                                 \\ \hline
-pg\_size                & Size of good, either `S', `M', `L', ..., or a numbered size, or `OSFA' (one size fits all)                                                                            \\ \hline
+pg\_size                & Size of good, either `S', `M',`L', ..., or a numbered size, or `OSFA' (one size fits all)                                                                             \\ \hline
 redirect\_url           & The non-local url that the redirect sent the user to. Music videos redirect to a Soundcloud uri, Videos redirect to a Youtube uri.                                    \\ \hline
 sale\_date              & Datetime this sale was logged                                                                                                                                         \\ \hline
-sale\_fulfill\_date     & Datetime this sale was set to `fulfilled'                                                                                                                                 \\ \hline
+sale\_fulfill\_date     & Date this sale was set to `fulfilled'                                                                                                                                 \\ \hline
 sale\_id                & Sales/transaction identifier                                                                                                                                          \\ \hline
-sale\_status            & The shipping status, `recieved', `shipped' or `fulfilled'                                                                                                             \\ \hline
+sale\_status            & The shipping status, `received', `shipped' or `fulfilled'                                                                                                             \\ \hline
 so\_artist              & Artist of song, including features                                                                                                                                    \\ \hline
 so\_plays               & Total plays originating at the site. This is derived from the log of PLAY entries pointing to this song.                                                              \\ \hline
 so\_plays\_today        & Plays on the site today. This is derived from the log of PLAY entries pointing to this song.                                                                          \\ \hline
 so\_redirects           & Redirects to SoundCloud (triggered by clicks on the embedded player). This is derived from the log of REDIRECT entries pointing to this song.                         \\ \hline
 so\_title               & Title of song                                                                                                                                                         \\ \hline
-so\_upload\_date        & Datetime that the video was uploaded to SoundCloud                                                                                                                   \\ \hline
+so\_upload\_date        & Date/time that the video was uploaded to SoundCloud                                                                                                                   \\ \hline
 so\_url                 & SoundCloud URL that the video is hosted at                                                                                                                            \\ \hline
 
 \end{longtable}
@@ -292,17 +298,20 @@ so\_url                 & SoundCloud URL that the video is hosted at            
 
 c\_email                &   &   &   &   &   &   & x & x &   &   \\ \hline
 c\_first\_name          &   &   &   &   &   &   & x & x &   &   \\ \hline
-c\_id                   &   &   &   &   &   &   & x & x &   &   \\ \hline
+c\_id                   &   &   &   &   &   &   &   &   &   &   \\ \hline
 c\_last\_name           &   &   &   &   &   &   & x & x &   &   \\ \hline
 c\_phone                &   &   &   &   &   &   & x & x &   &   \\ \hline
 dc\_country             &   &   &   &   &   &   &   & x &   &   \\ \hline
+dc\_id                  &   &   &   &   &   &   &   & x &   &   \\ \hline
+dg\_id                  &   &   &   &   &   & x &   &   &   &   \\ \hline
 dg\_is\_available       &   &   &   & x &   & x &   &   & x &   \\ \hline
 g\_description          &   &   & x & x & x & x &   &   &   &   \\ \hline
 g\_image\_url           &   &   & x & x & x & x &   &   &   &   \\ \hline
 g\_name                 &   &   & x & x & x & x &   &   & x &   \\ \hline
 g\_price                &   &   & x & x & x & x &   &   & x &   \\ \hline
-g\_sku                  &   &   &   &   & x & x &   &   & x &   \\ \hline
+g\_sku                  &   &   &   &   &   &   &   &   & x &   \\ \hline
 i\_date                 &   &   &   &   &   &   &   &   &   & x \\ \hline
+i\_id                   &   &   &   &   &   &   &   &   &   & x \\ \hline
 li\_number              &   &   &   &   &   &   &   &   & x &   \\ \hline
 li\_quantity            &   &   &   &   &   &   &   &   & x &   \\ \hline
 m\_id                   &   &   &   &   &   &   &   &   &   & x \\ \hline
@@ -315,9 +324,11 @@ mv\_url                 & x &   &   &   &   &   &   &   &   &   \\ \hline
 pc\_address\_line\_1    &   &   &   &   &   &   & x &   &   &   \\ \hline
 pc\_address\_line\_2    &   &   &   &   &   &   & x &   &   &   \\ \hline
 pc\_country             &   &   &   &   &   &   & x &   &   &   \\ \hline
+pc\_id                  &   &   &   &   &   &   & x &   &   &   \\ \hline
 pc\_state               &   &   &   &   &   &   & x &   &   &   \\ \hline
 pc\_zip\_code           &   &   &   &   &   &   & x &   &   &   \\ \hline
 pg\_color               &   &   & x &   & x &   &   &   & x &   \\ \hline
+pg\_id                  &   &   &   &   & x &   &   &   &   &   \\ \hline
 pg\_quantity\_available &   &   & x &   & x &   &   &   &   &   \\ \hline
 pg\_size                &   &   & x &   & x &   &   &   & x &   \\ \hline
 redirect\_url           &   &   &   &   &   &   &   &   &   &   \\ \hline
@@ -351,6 +362,7 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Music Video
   \begin{itemize*}
+    \item mv\_id (alias of m\_id)
     \item mv\_title
     \item mv\_url (url video is hosted at)
     \item mv\_upload\_date
@@ -358,21 +370,28 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Song
   \begin{itemize*}
+    \item so\_id (alias of m\_id)
     \item so\_title
     \item so\_artist
     \item so\_url (url song is hosted at)
     \item so\_upload\_date
   \end{itemize*}
 
+\item Interaction
+  \begin{itemize*}
+  \item i\_id
+  \item i\_date
+  \end{itemize*}
+
 \item Play
   \begin{itemize*}
-    \item i\_date
+  \item pl\_id (alias of i\_id)
   \end{itemize*}
 
 \item Redirect
   \begin{itemize*}
-    \item i\_date
-    \item redirect\_url (``YouTube'' or ``SoundCloud'')
+    \item re\_id (alias of i\_id)
+    \item re\_url
   \end{itemize*}
 
 \item Consumer
@@ -386,6 +405,7 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Physical Consumer
   \begin{itemize*}
+    \item pc\_id (alias of c\_id)
     \item pc\_address\_line\_1
     \item pc\_address\_line\_2
     \item pc\_country
@@ -394,6 +414,7 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Digital Consumer
   \begin{itemize*}
+    \item dc\_id (alias of c\_id)
     \item dc\_country (optional)
   \end{itemize*}
 
@@ -407,7 +428,6 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Line Item
   \begin{itemize*}
-    \item li\_number
     \item li\_quantity
   \end{itemize*}
 
@@ -421,11 +441,13 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \item Digital Good
   \begin{itemize*}
+    \item dg\_id (alias g\_sku)
     \item dg\_is\_available (boolean, used to prevent ordering)
   \end{itemize*}
 
 \item Physical Good
   \begin{itemize*}
+    \item pg\_id (alias g\_sku)
     \item pg\_color
     \item pg\_size
     \item pg\_quantity\_available
@@ -474,67 +496,67 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 \begin{verbatim}
 MEDIA(m_id)
 
-MUSIC_VIDEO(m_id, mv_title, mv_url, mv_upload_date)
-    PK/FK: m_id
+MUSIC_VIDEO(mv_id, mv_title, mv_url, mv_upload_date)
+    PK/FK: mv_id
     CK: m_id, mv_title, mv_url
 
-SONG(m_id, so_title, so_artist, so_url, so_upload_date)
-    PK/FK: m_id
-    CK: m_id, so_title, so_url
+SONG(so_id, so_title, so_artist, so_url, so_upload_date)
+    PK/FK: so_id
+    CK: so_id, so_title, so_url
 
-PLAY(m_id, i_datetime)
-    PK/FK: m_id
-    CK: m_id
+PLAY(pl_id, m_id, i_datetime)
+    PK: pl_id
+    FK: m_id
+    CK: pl_id
 
 REDIRECT(m_id, m_to)
-    PK/FK: m_id
-    CK: m_id
+    PK: re_id
+    FK: m_id
+    CK: re_id
 
 CONSUMER(c_id, c_firstname, c_lastname, c_email)
     PK: c_id
     CK: c_id, c_email
 
 PHYSICAL_CONSUMER(
-  c_id
+  pc_id
 , pc_address_line_1
 , pc_address_line_2
 , pc_country
 , pc_state
 , pc_phone
 )
-    PK/FK: c_id
-    CK: c_id, pc_phone
+    PK/FK: pc_id
+    CK: pc_id, pc_phone
 
 DIGITAL_CONSUMER(
-  c_id
+  dc_id
 , pc_phone
 , pc_country
 )
-    PK/FK: c_id
-    CK: c_id, pc_phone
+    PK/FK: dc_id
+    CK:    dc_id, pc_phone
 
-PURCHASE(p_id, c_id, p_date)
-    PK/FK: p_id
-    CK: p_id, c_id
+PURCHASE(sale_id, c_id, sale_date, sale_fulfill_date)
+    PK/FK: sale_id
+    CK:    sale_id, c_id
 
+LINE_ITEM(sale_id, g_id, li_quantity)
+    PK: sale_id
+    CK: sale_id
+    FK: sale_id, g_id
 
-
-LINE_ITEM(p_id, g_id, quantity)
-    PK: p_id
-    CK: p_id
-    FK: p_id, g_id
-
-GOOD(g_name, g_description, g_sku, g_price)
-    PK: g_sku
-    CK: g_name, g_sku
-
-DIGITAL_GOOD(g_sku, dg_is_frozen)
+GOOD(g_sku, g_name, g_description, g_price)
     PK: g_sku
     CK: g_sku
 
-PHYSICAL_GOOD(g_sku, pg_color, pg_size, pg_quantity_available)
-    PK/FK: g_sku
-    CK: g_sku
+DIGITAL_GOOD(dg_id, dg_is_available)
+    PK: dg_id
+    CK: dg_id
+
+PHYSICAL_GOOD(pg_id, pg_color, pg_size, pg_quantity_available)
+    PK/FK: pg_id
+    CK:    pg_id
 \end{verbatim}
 
 \clearpage
