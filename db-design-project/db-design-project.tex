@@ -455,24 +455,13 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \noindent\textbf{Media Relationships}
 \begin{enumerate}
-\item \texttt{m\_id} $\longrightarrow$ \texttt{m\_upload\_date, so\_id, mv\_id}
-\item \texttt{so\_id} $\longrightarrow$ \texttt{so\_title, so\_artist, so\_url, m\_id}
-\item \texttt{mv\_id} $\longrightarrow$ \texttt{mv\_title, mv\_url, m\_id}
-\item \texttt{i\_id} $\longrightarrow$ \texttt{i\_date, m\_id, re\_id, pl\_id}
-\item \texttt{re\_id} $\longrightarrow$ \texttt{re\_url, i\_id}
-\item \texttt{pl\_id} $\longrightarrow$ \texttt{i\_id}
+\item INTERACTION(i\_id, m\_id)
 \end{enumerate}
 
 \noindent\textbf{Sales Relationships}
 \begin{enumerate}
-\item \texttt{c\_id} $\longrightarrow$ \texttt{c\_firstname, c\_lastname, c\_email, c\_phone, dc\_id, pc\_id}
-\item \texttt{dc\_id} $\longrightarrow$ \texttt{dc\_country, c\_id}
-\item \texttt{pc\_id} $\longrightarrow$ \texttt{pc\_address\_line\_1, pc\_address\_line\_2, pc\_country, pc\_state, c\_id}
-\item \texttt{sale\_id} $\longrightarrow$ \texttt{sale\_status, sale\_date, sale\_fulfill\_date}
-\item \texttt{g\_sku} $\longrightarrow$ \texttt{g\_name, g\_description, g\_price, pg\_id, dg\_id}
-\item \texttt{pg\_id} $\longrightarrow$ \texttt{pg\_color, pg\_size, pg\_quantity\_available, g\_sku}
-\item \texttt{dg\_id} $\longrightarrow$ \texttt{dg\_is\_available, g\_sku}
-\item \texttt{(sale\_id, g\_sku)} $\longrightarrow$ \texttt{li\_quantity}
+\item CUSTOMER\_PURCHASE(c\_id, sale\_id)
+\item LINE\_ITEM(sale\_id, g\_sku)
 \end{enumerate}
 
 \clearpage
@@ -645,8 +634,31 @@ Not too many limitation currently. I recently added a parent \texttt{MEDIA} enti
 
 %---    Database Integrity and Security    ---%
 \chapter{Database Integrity and Security}
+
 \section{Functional Dependencies}
-    A list of the functional dependencies that hold on your database.
+
+\noindent\textbf{Media Dependencies}
+\begin{enumerate}
+\item \texttt{m\_id} $\longrightarrow$ \texttt{m\_upload\_date, so\_id, mv\_id}
+\item \texttt{so\_id} $\longrightarrow$ \texttt{so\_title, so\_artist, so\_url, m\_id}
+\item \texttt{mv\_id} $\longrightarrow$ \texttt{mv\_title, mv\_url, m\_id}
+\item \texttt{i\_id} $\longrightarrow$ \texttt{i\_date, m\_id, re\_id, pl\_id}
+\item \texttt{re\_id} $\longrightarrow$ \texttt{re\_url, i\_id}
+\item \texttt{pl\_id} $\longrightarrow$ \texttt{i\_id}
+\end{enumerate}
+
+\noindent\textbf{Sales Dependencies}
+\begin{enumerate}
+\item \texttt{c\_id} $\longrightarrow$ \texttt{c\_firstname, c\_lastname, c\_email, c\_phone, dc\_id, pc\_id}
+\item \texttt{dc\_id} $\longrightarrow$ \texttt{dc\_country, c\_id}
+\item \texttt{pc\_id} $\longrightarrow$ \texttt{pc\_address\_line\_1, pc\_address\_line\_2, pc\_country, pc\_state, c\_id}
+\item \texttt{sale\_id} $\longrightarrow$ \texttt{sale\_status, sale\_date, sale\_fulfill\_date}
+\item \texttt{g\_sku} $\longrightarrow$ \texttt{g\_name, g\_description, g\_price, pg\_id, dg\_id}
+\item \texttt{pg\_id} $\longrightarrow$ \texttt{pg\_color, pg\_size, pg\_quantity\_available, g\_sku}
+\item \texttt{dg\_id} $\longrightarrow$ \texttt{dg\_is\_available, g\_sku}
+\item \texttt{(sale\_id, g\_sku)} $\longrightarrow$ \texttt{li\_quantity}
+\end{enumerate}
+
 \section{Adjustments for Normalization}
     An explanation of the changes needed to normalize your database.
 \section{Integrity and Security}
