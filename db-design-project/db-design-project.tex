@@ -462,28 +462,24 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 
 \noindent\textbf{Media Relationships}
 \begin{enumerate}
-\item MUSIC\_VIDEO has many INTERACTION
-\item INTERACTION has 1 MUSIC\_VIDEO
-\item SONG has many INTERACTION
-\item INTERACTION has 1 SONG
-\item INTERACTION is a PLAY
-\item INTERACTION is a REDIRECT
+\item \texttt{m\_id} $\longrightarrow$ \texttt{m\_upload\_date, so\_id, mv\_id}
+\item \texttt{so\_id} $\longrightarrow$ \texttt{so\_title, so\_artist, so\_url, m\_id}
+\item \texttt{mv\_id} $\longrightarrow$ \texttt{mv\_title, mv\_url, m\_id}
+\item \texttt{i\_id} $\longrightarrow$ \texttt{i\_date, m\_id, re\_id, pl\_id}
+\item \texttt{re\_id} $\longrightarrow$ \texttt{re\_url, i\_id}
+\item \texttt{pl\_id} $\longrightarrow$ \texttt{i\_id}
 \end{enumerate}
 
 \noindent\textbf{Sales Relationships}
 \begin{enumerate}
-\item CONSUMER is a PHYSICAL\_CONSUMER
-\item CONSUMER is a DIGITAL\_CONSUMER
-\item CONSUMERS make many PURCHASE
-\item PURCHASE has 1 CUSTOMER
-\item PURCHASE has many LINE\_ITEM
-\item PURCHASE has 1 STATUS
-\item STATUS is applicable to 1 PURCHASE
-\item LINE\_ITEM belongs to 1 PURCHASE
-\item LINE\_ITEM has 1 GOOD
-\item GOOD can appear in many LINE\_ITEM
-\item GOOD is a DIGITAL\_GOOD
-\item GOOD is a PHYSICAL\_GOOD
+\item \texttt{c\_id} $\longrightarrow$ \texttt{c\_firstname, c\_lastname, c\_email, c\_phone, dc\_id, pc\_id}
+\item \texttt{dc\_id} $\longrightarrow$ \texttt{dc\_country, c\_id}
+\item \texttt{pc\_id} $\longrightarrow$ \texttt{pc\_address\_line\_1, pc\_address\_line\_2, pc\_country, pc\_state, c\_id}
+\item \texttt{sale\_id} $\longrightarrow$ \texttt{sale\_status, sale\_date, sale\_fulfill\_date}
+\item \texttt{g\_sku} $\longrightarrow$ \texttt{g\_name, g\_description, g\_price, pg\_id, dg\_id}
+\item \texttt{pg\_id} $\longrightarrow$ \texttt{pg\_color, pg\_size, pg\_quantity\_available, g\_sku}
+\item \texttt{dg\_id} $\longrightarrow$ \texttt{dg\_is\_available, g\_sku}
+\item \texttt{(sale\_id, g\_sku)} $\longrightarrow$ \texttt{li\_quantity}
 \end{enumerate}
 
 \clearpage
@@ -494,13 +490,13 @@ so\_url                 &   & x &   &   &   &   &   &   &   &   \\ \hline
 \section{Conceptual model of the enterprise}
 
 \begin{verbatim}
-MEDIA(m_id)
+MEDIA(m_id, m_upload_date)
 
-MUSIC_VIDEO(mv_id, mv_title, mv_url, mv_upload_date)
+MUSIC_VIDEO(mv_id, mv_title, mv_url)
     PK/FK: mv_id
     CK: m_id, mv_title, mv_url
 
-SONG(so_id, so_title, so_artist, so_url, so_upload_date)
+SONG(so_id, so_title, so_artist, so_url)
     PK/FK: so_id
     CK: so_id, so_title, so_url
 
