@@ -630,7 +630,7 @@ so\_url                 & SONG                   & SoundCloud URL that the video
 
 \clearpage
 \section{Design Tradeoffs and Limitations}
-Not too many limitation currently. I recently added a parent \texttt{MEDIA} entity for videos and songs.
+Music videos and songs have some duplicate fields that could be added to the parent Media table. This was done to allow individual constraints to be placed upon those fields. For example there is both an `so\_url' and a `mv\_url', the separation here would allow for specific constraints to be placed, like checking that ``youtube'' is somewhere in the link of a video.
 
 %---    Database Integrity and Security    ---%
 \chapter{Database Integrity and Security}
