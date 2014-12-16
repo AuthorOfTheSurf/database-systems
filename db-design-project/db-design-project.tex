@@ -17,6 +17,9 @@
 
 % \verbatiminput command (\begin{verbatim} is standard lib)
 \usepackage{verbatim}
+% Allows for verbatiminput of files AND breaks lines that are too long
+% for the page to fit
+\usepackage{listings}
 
 \newcommand*\rot{\rotatebox{90}}
 
@@ -83,7 +86,7 @@ As the main operator of his business, John wants to track of his sales and reven
     \item What is the redirect rate for videos?
     \item Is ``Black Silk Hooded Sweatshirt'' sold out?
     \item How many ``Red Summer Beanie'' items were sold in October 2014?
-    \item What physical goods are currently frozen? (sales prevented)
+    \item What digital goods are currently frozen? (sales prevented)
     \item How many orders do I have to fill to the US?
     \item What precentage of my digital consumers are from outside the US?
     \item What is the average monthly revenue over the past six months?
@@ -622,11 +625,11 @@ so\_url                 & SONG                   & SoundCloud URL that the video
 \chapter{Database and Query Definition}
 
 \section{Database Definition}
-    \verbatiminput{online-music-business.sql}
+    \verbatiminput{sql/online-music-business.sql}
 
 \clearpage
 \section{Database Queries}
-    \verbatiminput{db-queries-10-questions.sql}
+    \verbatiminput{sql/db-queries-10-questions.sql}
 
 \clearpage
 \section{Design Tradeoffs and Limitations}
@@ -685,13 +688,13 @@ John's database has already been presented in third normal form. No further norm
 \section{Indices}
 An index should be placed on \textbf{c\_id} as it is the primary index of customers. Having this as a primary, physical index will improve search times for a customer by id. This will reduce the operation time of join operations, such as the join to figure out which purchase belongs to a specific customer.
 
-A primary index should be placed on \textbf{sale\_id} and \textbf{g\_sku} as physical indexes here will improve search times for individual elements. This will also make the joins between Purchase and Good through Line_Item quicker.
+A primary index should be placed on \textbf{sale\_id} and \textbf{g\_sku} as physical indexes here will improve search times for individual elements. This will also make the joins between Purchase and Good through Line\_Item quicker.
 
 No further indexes will be placed. The main information that John wants to see is available through joining tables together. Since physical indexes have already been placed on the join-on properties, these tables have been indexed as effectively as necessary.
 
 \clearpage
 \section{Data}
-    The data used to populate your database.
+    \lstinputlisting[breaklines]{sql/music-store-data.sql}
 
 \clearpage
 \section{Query Trace}
