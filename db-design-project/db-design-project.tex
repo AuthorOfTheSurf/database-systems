@@ -700,6 +700,8 @@ No further indexes will be placed. The main information that John wants to see i
 \section{Query Trace}
 A bug was occuring for me in phpMyAdmin. To do the query trace a separate window is opened up, when I attempt to load in the files there phpMyAdmin ALWAYS loses my login token. As a result I cannot see or generate a query trace. The history view cannot be accessed outside of the popup menu. I have tried several browsers, operating systems and orders of doing this process, to no avail.
 
+I can confirm that creating the database, inserting data values, and running my set of queries all worked successfully.
+
 \clearpage
 \section{Implementation Assessment}
 The order that I went about things really helped my implementation. After several iterations of improving the design of my database I had my ERB/tables all set and correct. This was essential in being able to generate data that would reveal the success of my queries. When writing data and queries it is important that all the naming and conventions be out of the way.
@@ -710,5 +712,14 @@ The most difficult part of implementation was trying to get the query trace to w
 
 %---    Lessons Learned    ---%
 \chapter{Lessons Learned}
+By the end of the project I felt that I was using all the right tools. Using \LaTeX and ER Studio were the two most essential tools. \LaTeX allowed me to compose my project in a programmatic way. It automatically respects changes to all source files such as images and raw sql files. ER Studio made designing the ERB simple and the database generation came for free once the ERB was correct. Like \LaTeX, ER Studio allowed me to only make changes in one place, reducing the element of human error.
+
+I used as many \LaTeX helpers as I could, I had a site that converted excel tables into latex tables. I would simply do my table work in Google Sheets (excel in Google Docs) then use the tool to do most of the work to translate. I incorporated \LaTeX packages as necessary. I used longtable for multi-page tables, verbatim to include textual code files, and several more included and commented-on in this tex file.
+
+I do not know how many hours per week I spent on the project, it must have been at least 6-8. The time I spent was often clumped up into two to three days per deliverable. It would have been better to split the work out---in retrospect a lot of the sections of this project can have meaningful work done towards them in a single hour or less. What helped me tremendously was the feedback and office hours. Through them I was able to correct the mistakes I was making and come to a better understanding of relational database systems. Designing my database as correctly as possible was a big priority for me, and as the semester went on my database actually became simpler and easier to use as a tool.
+
+The project certainly helped me learn SQL. More importantly it helped me understand what SQL was for me to write. Database generation should be done by ER Studio. Data generation should be drafted in a spreadsheet then transpiled into SQL statements later. Only the queries themselves should be written by hand. I think that we could have learned ERB's slightly earlier in the semester to have our own database ERB's done sooner because they were so helpful. Even if they were bad or horribly incorrect, using ER Studio they can easily be iterably improved with feedback and question-asking. I got a good sense of normalization and how it is one of those things that `just happens' when a database is designed correctly. I found that the better the design was the simpler the normalization looked.
+
+MySQL was a good DBMS to use, it has the most normal SQL syntax compared to MS SQL and it isn't Oracle. The popularity of MySQL made it easy to get query help and debug why things weren't working. If I had to use another relational DBMS, I would be very interested in using Postgres. I hear that MySQL is not the best representative of its kind, despite being the most popular.
 
 \end{document}
