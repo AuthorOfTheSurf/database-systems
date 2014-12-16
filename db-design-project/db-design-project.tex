@@ -698,11 +698,15 @@ No further indexes will be placed. The main information that John wants to see i
 
 \clearpage
 \section{Query Trace}
-    A trace of the execution of each of your queries.
+A bug was occuring for me in phpMyAdmin. To do the query trace a separate window is opened up, when I attempt to load in the files there phpMyAdmin ALWAYS loses my login token. As a result I cannot see or generate a query trace. The history view cannot be accessed outside of the popup menu. I have tried several browsers, operating systems and orders of doing this process, to no avail.
 
 \clearpage
 \section{Implementation Assessment}
-    An assessment of how smoothly your implementation went
+The order that I went about things really helped my implementation. After several iterations of improving the design of my database I had my ERB/tables all set and correct. This was essential in being able to generate data that would reveal the success of my queries. When writing data and queries it is important that all the naming and conventions be out of the way.
+
+Having a solid ERB is probably the most important aspect of implementation. It is the best point of reference for doing mock data, queries as well as the generation of the database which I used Ebarcadero Studio for, which I found to be essential. Using tools was important for minimizing mistakes, the SQL compiler alerted me to any other issues that were missed.
+
+The most difficult part of implementation was trying to get the query trace to work. I didn't know how to do it initially, and with internet help it seems that there is a bug in phpMyAdmin that prevented me from gathering the trace data for that section.
 
 %---    Lessons Learned    ---%
 \chapter{Lessons Learned}
