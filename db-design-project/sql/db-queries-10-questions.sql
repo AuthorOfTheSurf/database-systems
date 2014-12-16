@@ -81,9 +81,13 @@ LEFT OUTER JOIN (
 ON `dc`.`dc_id` = `foreign`.`dc_id`
 ;
 
--- (9) What is the average monthly revenue over the past six months?
+-- (9) How many digital consumers are also physical consumers?
 
-#  INCOMPLETE 
+SELECT COUNT(`dc`.`dc_id`) AS `digital_and_physical`
+FROM `DIGITAL_CONSUMER` AS `dc`
+INNER JOIN `PHYSICAL_CONSUMER` AS `pc`
+ON `dc`.`dc_id` = `pc`.`pc_id`
+;
 
 -- (10) What products have garnered zero sales in the past 14 days?
 
